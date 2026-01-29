@@ -3,7 +3,7 @@
 
 
 # parse input file function to pass in hospitals and students preference lists
-def parse_input(filename):
+def parseInput(filename):
     # reading in file with edge case handling
     # read non-empty lines from file
     with open(filename) as file:
