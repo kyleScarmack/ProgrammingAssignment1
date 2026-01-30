@@ -3,6 +3,7 @@
 from inputParser import parseInput, validateInput
 from matcher import galeShapley, formatMatching
 from verifier import verifyMatching
+from scalability import runScalability
 
 # write output lines to file or stdout
 def writeLines(lines, outputFile):
@@ -53,6 +54,23 @@ def runVerify():
 
     if not success:
         return
+    
+# run scalability mode with interactive prompts
+def runScalabilityMenu():
+    print("scalability mode")
+    print("enter maximum power k for n=2^k (e.g. 12 -> 2^12 = 4096)")
+    s = input("> ").strip()
+
+    try:
+        maxPower = int(s) if s else 12  # default 12 up to 4096
+        if maxPower < 0:
+            raise ValueError
+    except ValueError:
+        print("invalid input; using default max power = 12 (up to 4096)")
+        maxPower = 12
+
+    runScalability(maxPower)
+
 
 # menu loop to select mode
 def main():
@@ -61,7 +79,8 @@ def main():
         print("stable matching menu")
         print("1) match (gale-shapley)")
         print("2) verify (check matching)")
-        print("3) exit")
+        print("3) scalability (timing + plots)")
+        print("4) exit")
         choice = input("> ").strip()
 
         if choice == "1":
@@ -75,6 +94,11 @@ def main():
             except Exception as exc:
                 print(f"ERROR: {exc}")
         elif choice == "3":
+            try:
+                runScalabilityMenu()
+            except Exception as exc:
+                print(f"ERROR: {exc}")
+        elif choice == "4":
             break
         else:
             print("invalid option, try again")
