@@ -34,19 +34,19 @@ Checks:
 ### Task C - Scalability
 Measure runtime for n = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and more for both matcher and verifier.
 
-**Matcher Runtime Graph**
+#### Matcher Runtime Graph
 
 ![Matcher Runtime](results/matcher_runtime_vs_n.png)
 
-**Verifier Runtime Graph**
+#### Verifier Runtime Graph
 
 ![Verifier Runtime](results/verifier_runtime_vs_n.png)
 
-**Trend Discussion**
+#### Trend Discussion
 Looking at both the matcher and verifier runtime graphs, the runtime remains almost constant for smaller values of n, but once n reaches around 1024, it increases sharply, showing more rapid growth as the number of hospitals and students increases. This trend reflects how the algorithms scale as the problem size grows. Additionally, the verifier shows a steeper increase than the matcher.
 
-**Scalability Experiments**
-Scalability results are generated automatically by the scalability script and do not require input files. Runtime graphs and CSV output are saved to the `results/` directory.
+#### Scalability Experiments
+Scalability results are generated automatically by the scalability script and do not require input files. Runtime graphs and CSV outputs are saved to the `results/` directory.
 
 ## Input / Output Format
 ### Input
