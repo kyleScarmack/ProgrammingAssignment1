@@ -1,9 +1,3 @@
-"""
-(a) Checks validity: each hospital and each student is matched to exactly one partner, with no duplicates.
-(b) Checks stability: confirms there is no blocking pair.
-"""
-
-import sys
 from inputParser import parseInput
 from dataStruct import createRankingMaps
 
@@ -117,23 +111,4 @@ def verifyMatching(inputFile, matchingFile):
         
     except Exception as e:
         return False, f"ERROR : {str(e)}"
-
-
-def main():
-    # Check command line arguments
-    if len(sys.argv) < 3:
-        print("Usage: python verifier.py <input_file> <matching_file>")
-        sys.exit(1)
     
-    inputFile = sys.argv[1]
-    matchingFile = sys.argv[2]
-
-    success, message = verifyMatching(inputFile, matchingFile)
-    print(message)
-    
-    if not success:
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
