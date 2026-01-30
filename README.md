@@ -43,7 +43,7 @@ Measure runtime for n = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and more for both
 ![Verifier Runtime](results/verifier_runtime_vs_n.png)
 
 #### Trend Discussion
-Looking at both the matcher and verifier runtime graphs, the runtime remains almost constant for smaller values of n, but once n reaches around 1024, it increases sharply, showing more rapid growth as the number of hospitals and students increases. This trend reflects how the algorithms scale as the problem size grows. Additionally, the verifier shows a steeper increase than the matcher.
+Looking at both the matcher and verifier runtime graphs, the runtime remains almost constant for smaller values of n, but once n reaches around 1024, it increases sharply, showing more rapid growth as the number of hospitals and students increases. This trend reflects how the algorithms scale as the problem size grows. This behavior is consistent with the expected O(n^2) time complexity of the Gale–Shapley algorithm, since in the worst case each hospital may propose to every student. As n becomes large, this quadratic growth becomes more apparent, explaining the sharp increase in runtime. Additionally, the verifier shows a steeper increase than the matcher due to the extra overhead required to check both validity and stability of the matching.
 
 #### Scalability Experiments
 Scalability results are generated automatically by the scalability script and do not require input files. Runtime graphs and CSV outputs are saved to the `results/` directory.
