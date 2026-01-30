@@ -16,6 +16,7 @@ Programming Assignment 1 implements the hospital-proposing Gale-Shapley algorith
 - `src/dataStruct.py` - Preference ranking maps for fast lookup
 - `results/` -   Contains all generated runtime graphs and CSV output files
 - `tests/` - Example inputs/outputs and edge case fixtures
+-  `data/inputs` and `data/outputs` - Contains randomly generated input/output files for scalability testing
 
 ## Tasks Summary
 ### Task A - Matching Engine
