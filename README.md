@@ -10,10 +10,11 @@ Programming Assignment 1 implements the hospital-proposing Gale-Shapley algorith
 ## Repository Structure
 - `src/matcher.py` - Gale-Shapley matching engine (hospital-proposing)
 - `src/verifier.py` - Validity and stability checker
+- `src/scalability.py` - Measures running time of each algorithm (matcher and verifier)
 - `src/main.py` - Menu-driven CLI
 - `src/inputParser.py` - Input parsing and validation
 - `src/dataStruct.py` - Preference ranking maps for fast lookup
-- (kyle add the graphs dir)
+- `results/` -   Contains all generated runtime graphs and CSV output files
 - `tests/` - Example inputs/outputs and edge case fixtures
 
 ## Tasks Summary
@@ -30,10 +31,21 @@ Checks:
 - **Stability**: no blocking pair exists.
 
 ### Task C - Scalability
-Measure runtime for n = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 for both matcher and verifier.
+Measure runtime for n = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and more for both matcher and verifier.
 
-- **Placeholder for graph**: (kyle put here)
-- **Placeholder for trend discussion**: (kyle put here)
+**Matcher Runtime Graph**
+
+![Matcher Runtime](results/matcher_runtime_vs_n.png)
+
+**Verifier Runtime Graph**
+
+![Verifier Runtime](results/verifier_runtime_vs_n.png)
+
+**Trend Discussion**
+Looking at both the matcher and verifier runtime graphs, the runtime remains almost constant for smaller values of n, but once n reaches around 1024, it increases sharply, showing more rapid growth as the number of hospitals and students increases. This trend reflects how the algorithms scale as the problem size grows. Additionally, the verifier shows a steeper increase than the matcher.
+
+**Scalability Experiments**
+Scalability results are generated automatically by the scalability script and do not require input files. Runtime graphs and CSV output are saved to the `results/` directory.
 
 ## Input / Output Format
 ### Input
@@ -60,10 +72,20 @@ INVALID: <reason>
 UNSTABLE: <blocking pair>
 ```
 
+### Output (Scalability)
+For each input size n:
+```
+n,matcher_time_seconds,verifier_time_seconds
+```
+The script also generates:
+- A CSV file with all recorded runtimes
+- A runtime graph for the matcher
+- A runtime graph for the verifier
+
 ## How to Run
 ### Requirements / Build
 - Python 3.x
-- No external dependencies
+- pip install matplotlib
 
 ### Menu-Driven CLI
 Run:
@@ -76,7 +98,8 @@ Menu options:
 stable matching menu
 1) match (gale-shapley)
 2) verify (check matching)
-3) exit
+3) scalability (timing + plots)
+4) exit
 ```
 
 ### Example Commands
@@ -95,6 +118,13 @@ python src\main.py
 Then choose option `2` and enter:
 - Input file: `tests/example2.in`
 - Matching file: `tests/example2.out`
+
+Scalability:
+```
+python src\main.py
+```
+Then choose option `3` and enter:
+- Maximum power k for n=2^k: `12`
 
 ## Example Files
 Inputs/Outputs:
